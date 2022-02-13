@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  nuxt:
+    image: node:lts-alpine
+    tty: true
+    stdin_open: true
+    restart: always
+    entrypoint: ["yarn", "dev"]
+    container_name: nuxt-dev
+    ports:
+      - 3000:3000
+    environment:
+      - HOST=0.0.0.0
+      - NUXT_TELEMETRY_DISABLED=1
+    volumes:
+      - C:\vue-sample\first_nuxt:/app
+    working_dir: /app
