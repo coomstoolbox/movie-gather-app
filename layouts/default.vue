@@ -26,15 +26,6 @@
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <!-- <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn> -->
       <v-spacer />
       <v-toolbar-title @click="appReload()"
         ><div v-text="title"
@@ -62,8 +53,8 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-format-list-text',
+          title: 'Movie List',
           to: '/',
         },
         {
@@ -75,6 +66,11 @@ export default {
           icon: 'mdi-chart-bubble',
           title: 'List2',
           to: '/list2',
+        },
+        {
+          icon: 'mdi-cog',
+          title: 'Config',
+          to: '/config',
         },
       ],
       miniVariant: false,
