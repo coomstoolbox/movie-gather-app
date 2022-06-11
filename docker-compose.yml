@@ -6,7 +6,7 @@ services:
     tty: true
     stdin_open: true
     restart: always
-    entrypoint: ["yarn", "dev"]
+    entrypoint: ['yarn', 'dev']
     container_name: nuxt-dev
     ports:
       - 3000:3000

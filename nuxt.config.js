@@ -84,16 +84,15 @@ export default {
 
   watchers: {
     webpack: {
-      poll: true
-    }
+      poll: true,
+    },
   },
 
   router: {
-    base: '/movie-gather-app/'
+    base: '/movie-gather-app/',
   },
 
   generate: {
-    dir: 'docs'
+    dir: 'docs',
   },
-
 }

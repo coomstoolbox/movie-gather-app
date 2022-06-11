@@ -68,13 +68,13 @@ export default {
       ],
     }
   },
-  mounted() {
-    if (localStorage.apiserverurl) this.apiserverurl = localStorage.apiserverurl
-  },
   watch: {
     apiserverurl(newapiserverurl) {
       localStorage.apiserverurl = newapiserverurl
     },
+  },
+  mounted() {
+    if (localStorage.apiserverurl) this.apiserverurl = localStorage.apiserverurl
   },
 }
 </script>

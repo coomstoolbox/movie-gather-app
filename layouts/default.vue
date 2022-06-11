@@ -19,7 +19,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title><div v-text="item.title" /></v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -36,7 +36,9 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn> -->
       <v-spacer />
-      <v-toolbar-title v-text="title" @click="appReload()" />
+      <v-toolbar-title @click="appReload()"
+        ><div v-text="title"
+      /></v-toolbar-title>
       <v-spacer />
     </v-app-bar>
     <v-main>

@@ -13,10 +13,10 @@
         :expanded.sync="expanded"
         item-key="id"
         show-expand
-        @update:page="$vuetify.goTo(0)"
         class="elevation-1"
+        @update:page="$vuetify.goTo(0)"
       >
-        <template v-slot:[`item.options`]="{ item }">
+        <template #[`item.options`]="{ item }">
           <v-icon v-if="item.latestWork" dense class="mr-2"
             >mdi-movie-open-star</v-icon
           >
@@ -30,7 +30,7 @@
             >mdi-archive-eye</v-icon
           >
         </template>
-        <template v-slot:[`item.actions`]="{ item }">
+        <template #[`item.actions`]="{ item }">
           <v-icon dense class="mr-2" @click="onClickRecordingItem(item)"
             >mdi-content-save</v-icon
           >
@@ -41,7 +41,7 @@
             >mdi-database-eye-off</v-icon
           >
         </template>
-        <template v-slot:expanded-item="{ headers, item }">
+        <template #expanded-item="{ headers, item }">
           <td :colspan="headers.length">{{ item.originTitle }}</td>
         </template>
       </v-data-table>
@@ -78,6 +78,18 @@ export default {
       tvpilist: [],
     }
   },
+  computed: {
+    indexedItems() {
+      return this.tvpilist.map((item, index) => ({
+        id: index,
+        ...item,
+      }))
+    },
+  },
+  created() {
+    if (localStorage.apiserverurl) this.apiserverurl = localStorage.apiserverurl
+    this.reloadList()
+  },
   methods: {
     async reloadList() {
       this.loading = true
@@ -88,6 +100,8 @@ export default {
       this.loading = false
     },
     watchedFilter(value, search, item) {
+      console.log(value)
+      console.log(search)
       return !item.watched
     },
     // http://www.google.com/search?hl=ja&btnI=1&q=既定のブラウザ
@@ -95,7 +109,8 @@ export default {
       console.log(item.title)
       this.loading = true
       const url = this.apiserverurl + '/v1/tvp/recording'
-      const tvpilist = await this.$axios.$post(url, item)
+      // const tvpilist =
+      await this.$axios.$post(url, item)
       item.watched = true
       this.loading = false
     },
@@ -103,7 +118,8 @@ export default {
       console.log(item.title)
       this.loading = true
       const url = this.apiserverurl + '/v1/tvp/watched'
-      const tvpilist = await this.$axios.$post(url, item)
+      // const tvpilist =
+      await this.$axios.$post(url, item)
       item.watched = true
       this.loading = false
     },
@@ -111,22 +127,11 @@ export default {
       console.log(item.title)
       this.loading = true
       const url = this.apiserverurl + '/v1/tvp/nowatch'
-      const tvpilist = await this.$axios.$post(url, item)
+      // const tvpilist =
+      await this.$axios.$post(url, item)
       item.watched = true
       this.loading = false
     },
   },
-  created: function () {
-    if (localStorage.apiserverurl) this.apiserverurl = localStorage.apiserverurl
-    this.reloadList()
-  },
-  computed: {
-    indexedItems () {
-      return this.tvpilist.map((item, index) => ({
-        id: index,
-        ...item
-      }))
-    }
-  }
 }
 </script>
