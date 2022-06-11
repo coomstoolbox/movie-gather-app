@@ -69,8 +69,8 @@ export default {
         },
         {
           icon: 'mdi-cog',
-          title: 'Config',
-          to: '/config',
+          title: 'Settings',
+          to: '/sttings',
         },
       ],
       miniVariant: false,

@@ -9,9 +9,7 @@
       </v-card>
       -->
       <v-card>
-        <v-card-title class="headline">
-          App configurations.
-        </v-card-title>
+        <v-card-title class="headline"> App configurations. </v-card-title>
         <v-card-text>
           <v-text-field
             v-model="apiserverurl"
@@ -19,10 +17,7 @@
             :rules="apiserverurlrules"
             hide-details="auto"
           />
-          <v-checkbox
-            v-model="cleverskip"
-            label="Clever skip"
-          />
+          <v-checkbox v-model="cleverskip" label="Clever skip" />
           <!--
           <div class="text-xs-right">
             <em><small>&mdash; coomstoolbox</small></em>
@@ -68,7 +63,7 @@
 
 <script>
 export default {
-  name: 'Config',
+  name: 'SettingsPage',
   data() {
     return {
       apiserverurl: '',
@@ -80,10 +75,10 @@ export default {
     }
   },
   watch: {
-    apiserverurl: newapiserverurl => {
+    apiserverurl(newapiserverurl) {
       localStorage.apiserverurl = newapiserverurl
     },
-    cleverskip: (newcleverskip) => {
+    cleverskip(newcleverskip) {
       localStorage.cleverskip = newcleverskip
     },
   },

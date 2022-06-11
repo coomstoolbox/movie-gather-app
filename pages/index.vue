@@ -78,7 +78,7 @@
 
 <script>
 export default {
-  name: 'ListPage2',
+  name: 'IndexPage',
   data() {
     return {
       apiserverurl: '',
